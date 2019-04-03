@@ -29,6 +29,7 @@ class LinkedList
   end
 
   def remove_last
+    return if @counter == 0
     temp = @head
     while temp.next != @tail do
       temp = temp.next

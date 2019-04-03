@@ -90,6 +90,24 @@ RSpec.describe LinkedList do
   end
 
   describe '#remove_last' do
+
+    context 'when the list is empty' do
+      it 'does not raise an error' do
+        expect { list.remove_last }.not_to raise_error
+      end
+    end
+
+    # context 'with one node' do
+    #   before do
+    #     list.add_first(node_one)
+    #   end
+    #   it 'sets the node to nil' do
+    #     list.remove_last
+    #     expect(list.head).to be_nil
+    #     expect(list.tail).to be_nil
+    #   end
+    # end
+
     context 'with more than one node' do
       before do
         list.add_first(node_one)
@@ -116,4 +134,5 @@ RSpec.describe LinkedList do
       expect(list.tail).to eql(node_three)
     end
   end
+
 end
