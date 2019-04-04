@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+require 'pry-byebug'
 
 RSpec.describe LinkedList do
   let(:list) { described_class.new }
@@ -15,6 +16,11 @@ RSpec.describe LinkedList do
   let(:node_three) do
     node = LinkedListNode.new
     node.value = 3
+    node
+  end
+  let(:node_four) do
+    node = LinkedListNode.new
+    node.value = 4
     node
   end
 
@@ -135,4 +141,23 @@ RSpec.describe LinkedList do
     end
   end
 
+  describe '#find' do
+    context 'with more than one node' do
+      before do
+        list.add_first(node_one)
+        list.add_first(node_two)
+        list.add_first(node_three)
+        list.add_first(node_four)
+      end
+      it 'finds the third node of the list' do
+        #1->2->3->4->nil
+        #1->2->4->nil
+        expect(list.find(1).value).to eql(1)
+        expect(list.find(2).value).to eql(2)
+        expect(list.find(3).value).to eql(3)
+        expect(list.find(4).value).to eql(4)
+        expect(list.find(6)).to eql(nil)
+      end
+    end
+  end
 end

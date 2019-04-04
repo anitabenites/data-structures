@@ -43,4 +43,18 @@ class LinkedList
     @counter -= 1
   end
 
+  def find(val)
+    return @head if @head.value == val
+    return @tail if @tail.value == val
+
+    temp = @head
+    # if temp.value == val
+    #   return temp
+    # end
+    while temp.next.value != val do
+      temp = temp.next
+      return nil if temp == @tail
+    end
+    temp.next
+  end
 end
