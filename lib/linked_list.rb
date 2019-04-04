@@ -19,7 +19,8 @@ class LinkedList
   end
 
   def remove_first
-    return if @counter == 0
+    return if @counter.zero?
+
     if @counter == 1
       @head = @tail = nil
     elsif @counter > 1
@@ -29,7 +30,10 @@ class LinkedList
   end
 
   def remove_last
-    return if @counter == 0
+    return if @counter.zero?
+
+    return @head = @tail = nil if @counter == 1
+
     temp = @head
     while temp.next != @tail do
       temp = temp.next

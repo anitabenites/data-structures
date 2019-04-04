@@ -97,16 +97,16 @@ RSpec.describe LinkedList do
       end
     end
 
-    # context 'with one node' do
-    #   before do
-    #     list.add_first(node_one)
-    #   end
-    #   it 'sets the node to nil' do
-    #     list.remove_last
-    #     expect(list.head).to be_nil
-    #     expect(list.tail).to be_nil
-    #   end
-    # end
+    context 'with one node' do
+      before do
+        list.add_first(node_one)
+      end
+      it 'sets the node to nil' do
+        list.remove_last
+        expect(list.head).to be_nil
+        expect(list.tail).to be_nil
+      end
+    end
 
     context 'with more than one node' do
       before do
