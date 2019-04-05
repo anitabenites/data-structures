@@ -7,6 +7,10 @@ class LinkedList
     @counter = 0
   end
 
+  def size
+    @counter
+  end
+
   def add_first(node)
     node.next = nil
     @head = @tail = node if @counter.zero?
@@ -48,13 +52,49 @@ class LinkedList
     return @tail if @tail.value == val
 
     temp = @head
-    # if temp.value == val
-    #   return temp
-    # end
+
     while temp.next.value != val do
       temp = temp.next
       return nil if temp == @tail
     end
     temp.next
   end
+
+  def remove(val)
+    # binding.pry
+    if size == 1 && @head.value == val
+      @head = @tail = nil
+      @counter -= 1
+    elsif size == 2
+        if @head.value == val
+          @head = @tail
+            @counter -= 1
+        elsif @tail.value == val
+          @tail = @head
+            @counter -= 1
+        end
+    else
+      current_node = @head
+      previous = nil
+      if current_node.value == val
+        @head = current_node.next
+        current_node.next = nil
+        @counter -= 1
+      else
+        while current_node.value != val do
+          return nil if current_node == @tail
+          previous = current_node
+          current_node = current_node.next
+        end
+        # binding.pry
+        next_node = current_node.next
+        previous.next = next_node
+        current_node.next = nil
+        @tail = previous if next_node.nil?
+        @counter -= 1
+      end
+    end
+
+  end
+
 end
