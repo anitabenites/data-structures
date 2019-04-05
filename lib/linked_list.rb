@@ -64,22 +64,12 @@ class LinkedList
     # binding.pry
     if size == 1 && @head.value == val
       @head = @tail = nil
-      @counter -= 1
-    elsif size == 2
-        if @head.value == val
-          @head = @tail
-            @counter -= 1
-        elsif @tail.value == val
-          @tail = @head
-            @counter -= 1
-        end
     else
       current_node = @head
       previous = nil
       if current_node.value == val
         @head = current_node.next
         current_node.next = nil
-        @counter -= 1
       else
         while current_node.value != val do
           return nil if current_node == @tail
@@ -88,13 +78,12 @@ class LinkedList
         end
         # binding.pry
         next_node = current_node.next
-        previous.next = next_node
+        previous.next = next_node unless
         current_node.next = nil
         @tail = previous if next_node.nil?
-        @counter -= 1
       end
     end
-
+    @counter -= 1
   end
 
 end
