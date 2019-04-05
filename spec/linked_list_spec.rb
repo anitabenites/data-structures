@@ -162,6 +162,18 @@ RSpec.describe LinkedList do
   end
 
   describe '#remove' do
+    context 'when we do not find the node in the list' do
+      before do
+        list.add_first(node_one)
+        list.add_first(node_two)
+        list.add_first(node_three)
+        list.add_first(node_four)
+      end
+      it 'does not raise an error'do
+        expect { list.remove(6) }.not_to raise_error
+      end
+    end
+
     context 'with one node' do
       before do
         list.add_first(node_one)
@@ -178,7 +190,18 @@ RSpec.describe LinkedList do
         list.add_first(node_one)
         list.add_first(node_two)
       end
-      it ''
+      context 'when you delete the head' do
+        it 'set the head to the tail' do
+          list.remove(list.head.value)
+          expect(list.head).to eql(list.tail)
+        end
+      end
+      context 'when you delete the tail' do
+        it 'set the tail to the head' do
+          list.remove(list.tail.value)
+          expect(list.head).to eql(list.tail)
+        end
+      end
     end
 
     context 'with more than two node' do
@@ -192,12 +215,12 @@ RSpec.describe LinkedList do
       it 'removes the third node of the list' do
         list.remove(3)
         expect(list.size).to eql(3)
-        list.remove(2)
-        expect(list.size).to eql(2)
-        list.remove(1)
-        expect(list.size).to eql(1)
-        list.remove(4)
-        expect(list.size).to eql(0)
+        # list.remove(2)
+        # expect(list.size).to eql(2)
+        # list.remove(1)
+        # expect(list.size).to eql(1)
+        # list.remove(4)
+        # expect(list.size).to eql(0)
       end
 
       it 'deletes the first node in the list' do
