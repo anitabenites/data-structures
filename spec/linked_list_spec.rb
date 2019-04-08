@@ -270,4 +270,19 @@ RSpec.describe LinkedList do
       end
     end
   end
+
+  describe '#map' do
+    context 'with more than two node' do
+      before do
+        list.add_first(node_one)
+        list.add_first(node_two)
+        list.add_first(node_three)
+        list.add_first(node_four)
+      end
+      it 'returns an array with the same amount of elements' do
+        result = list.map { |node| node.value += 1 }
+        expect(result).to eql([2,3,4,5])
+      end
+    end
+  end
 end

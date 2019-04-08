@@ -94,4 +94,12 @@ class LinkedList
     end
   end
 
+  def map(&block)
+    result = []
+    each do |node|
+      result.push(block.call(node))
+    end
+    return result
+  end
+
 end
