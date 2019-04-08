@@ -258,7 +258,6 @@ RSpec.describe LinkedList do
       end
       it 'returns the node' do
         list.each do |node|
-          puts node
           expect(node.value).to eq(1)
         end
       end
@@ -286,19 +285,23 @@ RSpec.describe LinkedList do
     end
   end
 
-  # describe '#select' do
-  #   context 'with more than two node' do
-  #     before do
-  #       list.add_first(node_one)
-  #       list.add_first(node_two)
-  #       list.add_first(node_three)
-  #       list.add_first(node_four)
-  #     end
-  #     it 'returns an array with the same amount of elements' do
-  #       result = list.map { |node| node.value += 1 }
-  #       expect(result).to eql([2,3,4,5])
-  #     end
-  #   end
-  # end
+  describe '#select' do
+    context 'with more than two node' do
+      before do
+        list.add_first(node_one)
+        list.add_first(node_two)
+        list.add_first(node_three)
+        list.add_first(node_four)
+      end
+      it 'returns an array with selected elements' do
+        result = list.select { |node| node.value % 2 == 0 }
+        expect(result).to eql([node_two,node_four])
+      end
+
+      it 'returns an empty array if no block is given' do
+        expect(list.select).to be_empty
+      end
+    end
+  end
 
 end

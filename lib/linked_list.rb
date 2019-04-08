@@ -98,9 +98,20 @@ class LinkedList
   def map(&block)
     result = []
     each do |node|
+      # I am calling the block method because I am doing a transformation
       result << block.call(node)
     end
-    return result
+    result
+  end
+
+  def select(&block)
+    return [] unless block_given?
+    result = []
+    each do |node|
+      # I am appending the node no transformation happends
+      result << node if block.call(node) == true
+    end
+    result
   end
 
 end
