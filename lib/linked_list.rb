@@ -86,4 +86,12 @@ class LinkedList
     @counter -= 1
   end
 
+  def each
+    current_node = @head
+    while current_node != nil do
+      yield current_node
+      current_node = current_node.next
+    end
+  end
+
 end

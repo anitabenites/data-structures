@@ -215,12 +215,12 @@ RSpec.describe LinkedList do
       it 'removes the third node of the list' do
         list.remove(3)
         expect(list.size).to eql(3)
-        # list.remove(2)
-        # expect(list.size).to eql(2)
-        # list.remove(1)
-        # expect(list.size).to eql(1)
-        # list.remove(4)
-        # expect(list.size).to eql(0)
+        list.remove(2)
+        expect(list.size).to eql(2)
+        list.remove(1)
+        expect(list.size).to eql(1)
+        list.remove(4)
+        expect(list.size).to eql(0)
       end
 
       it 'deletes the first node in the list' do
@@ -231,6 +231,42 @@ RSpec.describe LinkedList do
       it 'deletes the last node in the list' do
         list.remove(list.tail.value)
         expect(list.tail).to eql(node_three)
+      end
+    end
+  end
+
+  describe '#each' do
+    context 'with more than two node' do
+      before do
+        list.add_first(node_one)
+        list.add_first(node_two)
+        list.add_first(node_three)
+        list.add_first(node_four)
+      end
+      it 'returns each element of the list' do
+        counter = 1
+        list.each do |node|
+          expect(node.value).to eq(counter)
+          counter += 1
+        end
+      end
+    end
+
+    context 'with one node' do
+      before do
+        list.add_first(node_one)
+      end
+      it 'returns the node' do
+        list.each do |node|
+          puts node
+          expect(node.value).to eq(1)
+        end
+      end
+    end
+
+    context 'without nodes' do
+      it 'does not raise an error' do
+        expect { list.each }.not_to raise_error
       end
     end
   end
