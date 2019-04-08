@@ -2,6 +2,7 @@
 require 'pry-byebug'
 
 class LinkedList
+  # include Enumerable
   attr_accessor :head, :tail
   def initialize
     @counter = 0
@@ -97,7 +98,7 @@ class LinkedList
   def map(&block)
     result = []
     each do |node|
-      result.push(block.call(node))
+      result << block.call(node)
     end
     return result
   end
