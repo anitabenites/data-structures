@@ -1,3 +1,5 @@
+require 'pry-byebug'
+
 class DoublyLinkedList
   attr_accessor :head, :tail
   def initialize
@@ -8,15 +10,15 @@ class DoublyLinkedList
     @counter
   end
 
-  def add(node)
-    node.previous = nil
-    node.next = nil
+  def add(value)
+    node = DoublyLinkedListNode.new(value: value)
+
     @head = @tail = node if @counter.zero?
+
     if @counter >= 1
-      @tail.next = node
+      @tail.next = node.value
+      node.previous = @tail.value
       @tail = node
-      node.next = nil
-      node.previous = @head
     end
     @counter += 1
   end
