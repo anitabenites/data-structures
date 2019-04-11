@@ -52,6 +52,7 @@ RSpec.describe LinkedList do
         list.add_first(node_two)
         list.add_first(node_three)
       end
+#test assure the positions of the nodes are the correct one
 
       it 'adds a node to the beginning of the list' do
         expect(list.head).to eql(node_one)
@@ -59,6 +60,11 @@ RSpec.describe LinkedList do
 
       it 'points head to the next node' do
         expect(list.head.next).to eql(node_two)
+      end
+      it 'adds a node to the last of the list' do
+        list.add_first(node_four)
+        expect(list.tail.value).to eql(node_four.value)
+        expect(list.size).to eql(4)
       end
     end
   end
