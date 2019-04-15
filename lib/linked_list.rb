@@ -61,6 +61,7 @@ class LinkedList
     temp.next
   end
 
+#################### remove general method #######################
   def remove(val)
     # binding.pry
     if size == 1 && @head.value == val
@@ -86,6 +87,8 @@ class LinkedList
     end
     @counter -= 1
   end
+
+######################### each method ################################
 
   def each
     current_node = @head
