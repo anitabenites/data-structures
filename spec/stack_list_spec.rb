@@ -3,26 +3,6 @@ require 'pry-byebug'
 
 RSpec.describe StackList do
   let(:list) { described_class.new }
-  let(:node_one) do
-    node = StackList.new
-    node.value = 1
-    node
-  end
-  let(:node_two) do
-    node = StackList.new
-    node.value = 2
-    node
-  end
-  let(:node_three) do
-    node = StackList.new
-    node.value = 3
-    node
-  end
-  let(:node_four) do
-    node = StackList.new
-    node.value = 4
-    node
-  end
 
   describe 'in general' do
     it 'creates a new instance of self' do
@@ -56,6 +36,8 @@ RSpec.describe StackList do
         list.push(4)
         # expect(list.tail.value).to eql(4) ## this is working on the opposite way
         expect(list.size).to eql(4)
+        expect(list.head.value).to eql(4)
+        expect(list.tail.value).to eql(1)
       end
       # it 'points head to the next node' do
       #   expect(list.head.next).to eql()
@@ -95,7 +77,7 @@ RSpec.describe StackList do
         list.push(3)
       end
       it 'removes a node at the end of the list' do
-        list.pop
+        expect(list.pop).to eql(3)
         expect(list.head.value).to eq(2)
       end
     end

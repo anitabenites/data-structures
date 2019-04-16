@@ -22,8 +22,10 @@ class StackList
 
    def pop
      return nil unless size > 0
+     temp = @head
      @head = @head.next
      @tail = nil if size == 1
      @counter -= 1
+     temp.value
    end
 end
