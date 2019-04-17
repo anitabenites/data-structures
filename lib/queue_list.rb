@@ -15,4 +15,16 @@ class QueueList
     end
     @counter += 1
   end
+
+  def dequeue(value)
+   node = QueueNode.new(value: value)
+    if @counter == 1
+      @head = @tail = nil
+    end
+    if @counter > 1
+      node = @head.next
+      @head = node
+    end
+    @counter -= 1
+  end
 end
