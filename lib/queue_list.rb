@@ -18,6 +18,7 @@ class QueueList
 
   def dequeue(value)
    node = QueueNode.new(value: value)
+    # throw new InvalidOperationException("The queue is empty") if @counter == 0
     if @counter == 1
       @head = @tail = nil
     end

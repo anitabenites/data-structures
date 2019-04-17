@@ -72,4 +72,17 @@ RSpec.describe QueueList do
       end
     end
   end
+
+  # describe '#peek' do
+  #   context 'with more than 2 nodes' do
+  #     before do
+  #       list.enqueue(1)
+  #       list.enqueue(2)
+  #       list.enqueue(3)
+  #     end
+  #     it 'returns the first element of the list' do
+  #
+  #     end
+  #   end
+  # end
 end
